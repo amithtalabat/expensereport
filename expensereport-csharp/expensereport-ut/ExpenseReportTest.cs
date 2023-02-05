@@ -121,12 +121,12 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpenseOne = new Expense(71, ExpenseType.DINNER);
-            var dinnerExpenseTwo = new Expense(-10, ExpenseType.DINNER);
-            var breakFastExpenseOne = new Expense(29, ExpenseType.BREAKFAST);
-            var breakFastExpenseTwo = new Expense(-200, ExpenseType.BREAKFAST);
-            var carRentalExpenseOne = new Expense(400, ExpenseType.CAR_RENTAL);
-            var carRentalExpenseTwo = new Expense(-23, ExpenseType.CAR_RENTAL);
+            var dinnerExpenseOne = new Expense(71, Dinner);
+            var dinnerExpenseTwo = new Expense(-10, Dinner);
+            var breakFastExpenseOne = new Expense(29, Breakfast);
+            var breakFastExpenseTwo = new Expense(-200, Breakfast);
+            var carRentalExpenseOne = new Expense(400, CarRental);
+            var carRentalExpenseTwo = new Expense(-23, CarRental);
 
             report.PrintReport(new List<Expense>()
             {
