@@ -85,8 +85,7 @@ namespace expensereport_csharp
 
             foreach (var expense in expenses)
             {
-                var expenseTypeDomain = new ExpenseTypeDomain(expense.type);
-                if (expenseTypeDomain.IsMeal())
+                if (new ExpenseTypeDomain(expense.type).IsMeal())
                 {
                     mealExpenses += expense._amount;
                 }
