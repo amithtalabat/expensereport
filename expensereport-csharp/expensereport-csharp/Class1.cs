@@ -50,13 +50,18 @@ namespace expensereport_csharp
                         ? "X"
                         : " ";
 
-                Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+                PrintExpenseForAnItem(expenseName, expense, mealOverExpensesMarker);
 
                 total += expense.amount;
             }
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static void PrintExpenseForAnItem(string expenseName, Expense expense, string mealOverExpensesMarker)
+        {
+            Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
         }
 
         private static void PrintCurrentDate()
