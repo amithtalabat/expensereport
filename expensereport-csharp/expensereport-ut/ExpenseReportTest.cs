@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using expensereport_csharp;
 using NUnit.Framework;
@@ -9,10 +10,12 @@ namespace Tests
         [Test]
         public void ExpenseReportForNoExpenses()
         {
+            var now = DateTime.Now;
             var report = new DummyExpenseReport();
+            report._dateTime = now;
             
             report.PrintReport(new List<Expense>());
-            Assert.AreEqual("Expenses 02/05/2023 11:42:22",report._messages[0]);
+            Assert.AreEqual($"Expenses {now}",report._messages[0]);
             Assert.AreEqual("Meal expenses: 0",report._messages[1]);
             Assert.AreEqual("Total expenses: 0",report._messages[2]);
         }

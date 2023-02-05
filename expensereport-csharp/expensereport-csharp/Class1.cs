@@ -16,13 +16,14 @@ namespace expensereport_csharp
 
     public class ExpenseReport
     {
+        public DateTime _dateTime = DateTime.Now;
+
         public void PrintReport(List<Expense> expenses)
         {
             int total = 0;
             int mealExpenses = 0;
 
-            DateTime dateTime = DateTime.Now;
-            Print("Expenses " + dateTime);
+            Print("Expenses " + _dateTime);
             
             foreach (Expense expense in expenses)
             {
