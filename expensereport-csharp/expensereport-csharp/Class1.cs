@@ -8,21 +8,23 @@ namespace expensereport_csharp
     {
         public readonly ExpenseType Type;
         public readonly int Amount;
+        private readonly ExpenseTypeDomain _expenseType;
 
-        public Expense(int amount, ExpenseTypeDomain dinner)
+        public Expense(int amount, ExpenseTypeDomain expenseType)
         {
             Amount = amount;
-            Type = dinner._type;
+            Type = expenseType._type;
+            _expenseType = expenseType;
         }
 
         public string Name()
         {
-            return new ExpenseTypeDomain(Type).Name();
+            return _expenseType.Name();
         }
 
         public string MealLimitMarker()
         {
-            return new ExpenseTypeDomain(Type).ExpenseMarker(Amount);
+            return _expenseType.ExpenseMarker(Amount);
         }
     }
 
