@@ -12,47 +12,11 @@ namespace expensereport_csharp
     {
         public ExpenseType type;
         public int amount;
-    }
 
-    public class ExpenseReport
-    {
-        public DateTime _dateTime = DateTime.Now;
-
-        public void PrintReport(List<Expense> expenses)
-        {
-            int total = 0;
-            int mealExpenses = 0;
-
-            Print("Expenses " + _dateTime);
-            
-            foreach (Expense expense in expenses)
-            {
-                if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
-                {
-                    mealExpenses += expense.amount;
-                }
-
-                var expenseName = ExpenseNameFromExpenseType(expense);
-
-                String mealOverExpensesMarker =
-                    expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
-                    expense.type == ExpenseType.BREAKFAST && expense.amount > 1000
-                        ? "X"
-                        : " ";
-
-                Print(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
-
-                total += expense.amount;
-            }
-
-            Print("Meal expenses: " + mealExpenses);
-            Print("Total expenses: " + total);
-        }
-
-        private static string ExpenseNameFromExpenseType(Expense expense)
+        public string ExpenseNameFromExpenseType()
         {
             String expenseName = "";
-            switch (expense.type)
+            switch (type)
             {
                 case ExpenseType.DINNER:
                     expenseName = "Dinner";
@@ -66,6 +30,42 @@ namespace expensereport_csharp
             }
 
             return expenseName;
+        }
+    }
+
+    public class ExpenseReport
+    {
+        public DateTime _dateTime = DateTime.Now;
+
+        public void PrintReport(List<Expense> expenses)
+        {
+            var total = 0;
+            var mealExpenses = 0;
+
+            Print("Expenses " + _dateTime);
+            
+            foreach (Expense expense in expenses)
+            {
+                if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
+                {
+                    mealExpenses += expense.amount;
+                }
+
+                var expenseName = expense.ExpenseNameFromExpenseType();
+
+                var mealOverExpensesMarker =
+                    expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
+                    expense.type == ExpenseType.BREAKFAST && expense.amount > 1000
+                        ? "X"
+                        : " ";
+
+                Print(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+
+                total += expense.amount;
+            }
+
+            Print("Meal expenses: " + mealExpenses);
+            Print("Total expenses: " + total);
         }
 
         protected virtual void Print(string printedMessage)
