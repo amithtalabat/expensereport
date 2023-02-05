@@ -40,9 +40,9 @@ namespace Tests
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpense._amount}\t ",
-                $"Meal expenses: {dinnerExpense._amount}",
-                $"Total expenses: {dinnerExpense._amount}"
+                $"Dinner\t{dinnerExpense.Amount}\t ",
+                $"Meal expenses: {dinnerExpense.Amount}",
+                $"Total expenses: {dinnerExpense.Amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -61,9 +61,9 @@ namespace Tests
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Breakfast\t{dinnerExpense._amount}\t ",
-                $"Meal expenses: {dinnerExpense._amount}",
-                $"Total expenses: {dinnerExpense._amount}"
+                $"Breakfast\t{dinnerExpense.Amount}\t ",
+                $"Meal expenses: {dinnerExpense.Amount}",
+                $"Total expenses: {dinnerExpense.Amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -82,9 +82,9 @@ namespace Tests
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Car Rental\t{carRentalExpense._amount}\t ",
+                $"Car Rental\t{carRentalExpense.Amount}\t ",
                 "Meal expenses: 0",
-                $"Total expenses: {carRentalExpense._amount}"
+                $"Total expenses: {carRentalExpense.Amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -105,8 +105,8 @@ namespace Tests
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpense._amount}\tX",
-                $"Breakfast\t{breakfastExpense._amount}\tX",
+                $"Dinner\t{dinnerExpense.Amount}\tX",
+                $"Breakfast\t{breakfastExpense.Amount}\tX",
                 "Meal expenses: 15000",
                 "Total expenses: 15000"
             };
@@ -132,12 +132,12 @@ namespace Tests
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpenseOne._amount}\t ",
-                $"Dinner\t{dinnerExpenseTwo._amount}\t ",
-                $"Breakfast\t{breakFastExpenseOne._amount}\t ",
-                $"Breakfast\t{breakFastExpenseTwo._amount}\t ",
-                $"Car Rental\t{carRentalExpenseOne._amount}\t ",
-                $"Car Rental\t{carRentalExpenseTwo._amount}\t ",
+                $"Dinner\t{dinnerExpenseOne.Amount}\t ",
+                $"Dinner\t{dinnerExpenseTwo.Amount}\t ",
+                $"Breakfast\t{breakFastExpenseOne.Amount}\t ",
+                $"Breakfast\t{breakFastExpenseTwo.Amount}\t ",
+                $"Car Rental\t{carRentalExpenseOne.Amount}\t ",
+                $"Car Rental\t{carRentalExpenseTwo.Amount}\t ",
                 "Meal expenses: -110",
                 "Total expenses: 267"
             };
