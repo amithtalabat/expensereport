@@ -3,9 +3,9 @@ namespace expensereport_csharp
     public class Expense
     {
         public readonly int Amount;
-        private readonly ExpenseTypeDomain _expenseType;
+        private readonly ExpenseType _expenseType;
 
-        public Expense(int amount, ExpenseTypeDomain expenseType)
+        public Expense(int amount, ExpenseType expenseType)
         {
             Amount = amount;
             _expenseType = expenseType;
