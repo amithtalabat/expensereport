@@ -26,6 +26,11 @@ namespace expensereport_csharp
         {
             return _expenseType.ExpenseMarker(Amount);
         }
+
+        public bool IsMeal()
+        {
+            return _expenseType.IsMeal();
+        }
     }
 
     public class ExpenseTypeDomain
@@ -98,7 +103,7 @@ namespace expensereport_csharp
 
             foreach (var expense in expenses)
             {
-                if (expense._expenseType.IsMeal())
+                if (expense.IsMeal())
                 {
                     mealExpenses += expense.Amount;
                 }
