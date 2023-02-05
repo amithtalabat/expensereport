@@ -17,13 +17,7 @@ namespace expensereport_csharp
 
         public string Name()
         {
-            return type switch
-            {
-                ExpenseType.DINNER => "Dinner",
-                ExpenseType.BREAKFAST => "Breakfast",
-                ExpenseType.CAR_RENTAL => "Car Rental",
-                _ => ""
-            };
+            return new ExpenseTypeDomain(type).Name();
         }
 
         public string MealLimitMarker()
@@ -49,6 +43,17 @@ namespace expensereport_csharp
                     ? "X"
                     : " ";
             return mealOverExpensesMarker;
+        }
+
+        public string Name()
+        {
+            return _type switch
+            {
+                ExpenseType.DINNER => "Dinner",
+                ExpenseType.BREAKFAST => "Breakfast",
+                ExpenseType.CAR_RENTAL => "Car Rental",
+                _ => ""
+            };
         }
     }
 
