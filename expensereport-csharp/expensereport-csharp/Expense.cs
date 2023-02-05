@@ -11,12 +11,12 @@ namespace expensereport_csharp
             _expenseType = expenseType;
         }
 
-        public string Name()
+        private string Name()
         {
             return _expenseType.Name();
         }
 
-        public string MealLimitMarker()
+        private string MealLimitMarker()
         {
             return _expenseType.ExpenseMarker(Amount);
         }

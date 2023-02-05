@@ -16,7 +16,8 @@ namespace Tests
                 DateTime = TwentySecondDecember()
             };
 
-            report.PrintReport(new List<Expense>());
+            var expenses = new List<Expense>();
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
@@ -36,7 +37,8 @@ namespace Tests
             };
             var dinnerExpense = new Expense(10, Dinner);
 
-            report.PrintReport(new List<Expense>() { dinnerExpense });
+            List<Expense> expenses = new List<Expense>() { dinnerExpense };
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
@@ -57,7 +59,8 @@ namespace Tests
             };
             var breakfastExpense = new Expense(11, Breakfast);
 
-            report.PrintReport(new List<Expense>() { breakfastExpense });
+            List<Expense> expenses = new List<Expense>() { breakfastExpense };
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
@@ -78,7 +81,8 @@ namespace Tests
             };
             var carRentalExpense = new Expense(130, CarRental);
 
-            report.PrintReport(new List<Expense>() { carRentalExpense });
+            List<Expense> expenses = new List<Expense>() { carRentalExpense };
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
@@ -101,7 +105,8 @@ namespace Tests
             var dinnerExpense = new Expense(5001, Dinner);
             var breakfastExpense = new Expense(9999, Breakfast);
 
-            report.PrintReport(new List<Expense>() { dinnerExpense, breakfastExpense });
+            List<Expense> expenses = new List<Expense>() { dinnerExpense, breakfastExpense };
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
@@ -128,11 +133,12 @@ namespace Tests
             var carRentalExpenseOne = new Expense(400, CarRental);
             var carRentalExpenseTwo = new Expense(-23, CarRental);
 
-            report.PrintReport(new List<Expense>()
+            List<Expense> expenses = new List<Expense>()
             {
                 dinnerExpenseOne, dinnerExpenseTwo, breakFastExpenseOne, breakFastExpenseTwo, carRentalExpenseOne,
                 carRentalExpenseTwo
-            });
+            };
+            report.PrintReport(new Expenses(expenses));
 
             var expected = new List<string>
             {
