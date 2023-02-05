@@ -21,7 +21,8 @@ namespace expensereport_csharp
             int total = 0;
             int mealExpenses = 0;
 
-            PrintCurrentDate(DateTime.Now);
+            DateTime dateTime = DateTime.Now;
+            Print("Expenses " + dateTime);
             
             foreach (Expense expense in expenses)
             {
@@ -50,33 +51,18 @@ namespace expensereport_csharp
                         ? "X"
                         : " ";
 
-                PrintExpenseForAnItem(expenseName, expense, mealOverExpensesMarker);
+                Print(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
 
                 total += expense.amount;
             }
 
-            PrintMealExpenses(mealExpenses);
-            PrintTotalExpenses(total);
+            Print("Meal expenses: " + mealExpenses);
+            Print("Total expenses: " + total);
         }
 
-        private static void PrintTotalExpenses(int total)
+        private static void Print(string totalExpenses)
         {
-            Console.WriteLine("Total expenses: " + total);
-        }
-
-        private static void PrintMealExpenses(int mealExpenses)
-        {
-            Console.WriteLine("Meal expenses: " + mealExpenses);
-        }
-
-        private static void PrintExpenseForAnItem(string expenseName, Expense expense, string mealOverExpensesMarker)
-        {
-            Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
-        }
-
-        private static void PrintCurrentDate(DateTime dateTime)
-        {
-            Console.WriteLine("Expenses " + dateTime);
+            Console.WriteLine(totalExpenses);
         }
     }
 }
