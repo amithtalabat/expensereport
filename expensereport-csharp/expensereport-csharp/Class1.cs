@@ -32,19 +32,7 @@ namespace expensereport_csharp
                     mealExpenses += expense.amount;
                 }
 
-                String expenseName = "";
-                switch (expense.type)
-                {
-                    case ExpenseType.DINNER:
-                        expenseName = "Dinner";
-                        break;
-                    case ExpenseType.BREAKFAST:
-                        expenseName = "Breakfast";
-                        break;
-                    case ExpenseType.CAR_RENTAL:
-                        expenseName = "Car Rental";
-                        break;
-                }
+                var expenseName = ExpenseNameFromExpenseType(expense);
 
                 String mealOverExpensesMarker =
                     expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
@@ -59,6 +47,25 @@ namespace expensereport_csharp
 
             Print("Meal expenses: " + mealExpenses);
             Print("Total expenses: " + total);
+        }
+
+        private static string ExpenseNameFromExpenseType(Expense expense)
+        {
+            String expenseName = "";
+            switch (expense.type)
+            {
+                case ExpenseType.DINNER:
+                    expenseName = "Dinner";
+                    break;
+                case ExpenseType.BREAKFAST:
+                    expenseName = "Breakfast";
+                    break;
+                case ExpenseType.CAR_RENTAL:
+                    expenseName = "Car Rental";
+                    break;
+            }
+
+            return expenseName;
         }
 
         protected virtual void Print(string printedMessage)
