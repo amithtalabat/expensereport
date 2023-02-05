@@ -55,6 +55,16 @@ namespace expensereport_csharp
                 _ => ""
             };
         }
+
+        public bool IsDinner()
+        {
+            return _type == ExpenseType.DINNER;
+        }
+
+        public bool IsBreakfast()
+        {
+            return _type == ExpenseType.BREAKFAST;
+        }
     }
 
     public class ExpenseReport
@@ -71,7 +81,7 @@ namespace expensereport_csharp
             foreach (var expense in expenses)
             {
                 var expenseTypeDomain = new ExpenseTypeDomain(expense.type);
-                if (expenseTypeDomain._type == ExpenseType.DINNER || expenseTypeDomain._type == ExpenseType.BREAKFAST)
+                if (expenseTypeDomain.IsDinner() || expenseTypeDomain.IsBreakfast())
                 {
                     mealExpenses += expense._amount;
                 }
