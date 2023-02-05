@@ -8,7 +8,7 @@ namespace expensereport_csharp
     {
         public readonly ExpenseType Type;
         public readonly int Amount;
-        private readonly ExpenseTypeDomain _expenseType;
+        public readonly ExpenseTypeDomain _expenseType;
 
         public Expense(int amount, ExpenseTypeDomain expenseType)
         {
@@ -98,7 +98,7 @@ namespace expensereport_csharp
 
             foreach (var expense in expenses)
             {
-                if (new ExpenseTypeDomain(expense.Type).IsMeal())
+                if (expense._expenseType.IsMeal())
                 {
                     mealExpenses += expense.Amount;
                 }
