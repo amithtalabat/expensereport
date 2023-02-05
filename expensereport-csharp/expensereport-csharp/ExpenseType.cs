@@ -9,31 +9,28 @@ namespace expensereport_csharp
             CAR_RENTAL
         }
 
-        public static readonly ExpenseType Dinner = new(Type.DINNER, "Dinner", true);
+        public static readonly ExpenseType Dinner = new(Type.DINNER, "Dinner", true, 5000);
 
-        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST, "Breakfast", true);
+        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST, "Breakfast", true, 1000);
 
-        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL, "Car Rental", false);
+        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL, "Car Rental", false, int.MaxValue);
 
         private readonly Type _type;
         private readonly string _name;
         private readonly bool _isMeal;
+        private readonly int _amountLimit;
 
-        private ExpenseType(Type type, string name, bool isMeal)
+        private ExpenseType(Type type, string name, bool isMeal, int amountLimit)
         {
             _type = type;
             _name = name;
             _isMeal = isMeal;
+            _amountLimit = amountLimit;
         }
 
         public string ExpenseMarker(int amount)
         {
-            var mealOverExpensesMarker =
-                _type == Type.DINNER && amount > 5000 ||
-                _type == Type.BREAKFAST && amount > 1000
-                    ? "X"
-                    : " ";
-            return mealOverExpensesMarker;
+            return amount > _amountLimit ? "X" : " ";
         }
 
         public string Name()
