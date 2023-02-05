@@ -25,5 +25,10 @@ namespace expensereport_csharp
         {
             return _expenseType.IsMeal();
         }
+
+        public override string ToString()
+        {
+            return Name() + "\t" + Amount + "\t" + MealLimitMarker();
+        }
     }
 }

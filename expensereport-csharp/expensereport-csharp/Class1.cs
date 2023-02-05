@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace expensereport_csharp
 {
@@ -9,31 +10,20 @@ namespace expensereport_csharp
 
         public void PrintReport(List<Expense> expenses)
         {
-            Print("Expenses " + DateTime);
-
             var expensesDomain = new Expenses(expenses);
-
-            foreach (var expense in expensesDomain._expenses)
-            {
-                Print(expense.Name() + "\t" + expense.Amount + "\t" + expense.MealLimitMarker());
-            }
-
-            Print("Meal expenses: " + MealExpenses(expensesDomain));
+            
+            Print("Expenses " + DateTime);
+            Print(expensesDomain.ToStrings());
+            Print("Meal expenses: " + expensesDomain.MealExpenses());
             Print("Total expenses: " + expensesDomain.Total());
         }
 
-        private static int MealExpenses(Expenses expensesDomain)
+        private void Print(List<string> expensesToPrint)
         {
-            var mealExpenses = 0;
-            foreach (var expense in expensesDomain._expenses)
+            foreach (var expense in expensesToPrint)
             {
-                if (expense.IsMeal())
-                {
-                    mealExpenses += expense.Amount;
-                }
+                Print(expense);
             }
-
-            return mealExpenses;
         }
 
         protected virtual void Print(string printedMessage)
@@ -60,6 +50,25 @@ namespace expensereport_csharp
             }
 
             return total;
+        }
+
+        public List<string> ToStrings()
+        {
+            return _expenses.Select(expense => expense.ToString()).ToList();
+        }
+
+        public int MealExpenses()
+        {
+            var mealExpenses = 0;
+            foreach (var expense in _expenses)
+            {
+                if (expense.IsMeal())
+                {
+                    mealExpenses += expense.Amount;
+                }
+            }
+
+            return mealExpenses;
         }
     }
 }
