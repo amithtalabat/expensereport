@@ -9,19 +9,21 @@ namespace expensereport_csharp
             CAR_RENTAL
         }
 
-        public static readonly ExpenseType Dinner = new(Type.DINNER, "Dinner");
+        public static readonly ExpenseType Dinner = new(Type.DINNER, "Dinner", true);
 
-        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST, "Breakfast");
+        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST, "Breakfast", true);
 
-        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL, "Car Rental");
+        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL, "Car Rental", false);
 
         private readonly Type _type;
         private readonly string _name;
+        private readonly bool _isMeal;
 
-        private ExpenseType(Type type, string name)
+        private ExpenseType(Type type, string name, bool isMeal)
         {
             _type = type;
             _name = name;
+            _isMeal = isMeal;
         }
 
         public string ExpenseMarker(int amount)
@@ -39,19 +41,9 @@ namespace expensereport_csharp
             return _name;
         }
 
-        private bool IsDinner()
-        {
-            return _type == Type.DINNER;
-        }
-
-        private bool IsBreakfast()
-        {
-            return _type == Type.BREAKFAST;
-        }
-
         public bool IsMeal()
         {
-            return IsDinner() || IsBreakfast();
+            return _isMeal;
         }
     }
 }
