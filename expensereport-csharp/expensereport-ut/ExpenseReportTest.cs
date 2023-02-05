@@ -96,20 +96,26 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense() { amount = 71, type = ExpenseType.DINNER };
-            var breakFastExpense = new Expense() { amount = 29, type = ExpenseType.BREAKFAST };
-            var carRentalExpense = new Expense() { amount = 400, type = ExpenseType.CAR_RENTAL };
+            var dinnerExpenseOne = new Expense() { amount = 71, type = ExpenseType.DINNER };
+            var dinnerExpenseTwo = new Expense() { amount = -10, type = ExpenseType.DINNER };
+            var breakFastExpenseOne = new Expense() { amount = 29, type = ExpenseType.BREAKFAST };
+            var breakFastExpenseTwo = new Expense() { amount = -200, type = ExpenseType.BREAKFAST };
+            var carRentalExpenseOne = new Expense() { amount = 400, type = ExpenseType.CAR_RENTAL };
+            var carRentalExpenseTwo = new Expense() { amount = -23, type = ExpenseType.CAR_RENTAL };
             
-            report.PrintReport(new List<Expense>() { dinnerExpense, breakFastExpense, carRentalExpense });
+            report.PrintReport(new List<Expense>() { dinnerExpenseOne, dinnerExpenseTwo, breakFastExpenseOne, breakFastExpenseTwo, carRentalExpenseOne, carRentalExpenseTwo });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpense.amount}\t ",
-                $"Breakfast\t{breakFastExpense.amount}\t ",
-                $"Car Rental\t{carRentalExpense.amount}\t ",
-                "Meal expenses: 100",
-                "Total expenses: 500"
+                $"Dinner\t{dinnerExpenseOne.amount}\t ",
+                $"Dinner\t{dinnerExpenseTwo.amount}\t ",
+                $"Breakfast\t{breakFastExpenseOne.amount}\t ",
+                $"Breakfast\t{breakFastExpenseTwo.amount}\t ",
+                $"Car Rental\t{carRentalExpenseOne.amount}\t ",
+                $"Car Rental\t{carRentalExpenseTwo.amount}\t ",
+                "Meal expenses: -110",
+                "Total expenses: 267"
             };
             Assert.AreEqual(expected, report._messages);
         }
