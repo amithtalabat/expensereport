@@ -9,17 +9,19 @@ namespace expensereport_csharp
             CAR_RENTAL
         }
 
-        public static readonly ExpenseType Dinner = new(Type.DINNER);
+        public static readonly ExpenseType Dinner = new(Type.DINNER, "Dinner");
 
-        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST);
+        public static readonly ExpenseType Breakfast = new(Type.BREAKFAST, "Breakfast");
 
-        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL);
+        public static readonly ExpenseType CarRental = new(Type.CAR_RENTAL, "Car Rental");
 
         private readonly Type _type;
+        private readonly string _name;
 
-        private ExpenseType(Type type)
+        private ExpenseType(Type type, string name)
         {
             _type = type;
+            _name = name;
         }
 
         public string ExpenseMarker(int amount)
@@ -34,13 +36,7 @@ namespace expensereport_csharp
 
         public string Name()
         {
-            return _type switch
-            {
-                Type.DINNER => "Dinner",
-                Type.BREAKFAST => "Breakfast",
-                Type.CAR_RENTAL => "Car Rental",
-                _ => ""
-            };
+            return _name;
         }
 
         private bool IsDinner()
