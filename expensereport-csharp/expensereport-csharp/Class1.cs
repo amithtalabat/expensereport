@@ -20,10 +20,10 @@ namespace expensereport_csharp
             
         }
 
-        public Expense(ExpenseType type, int amount)
+        public Expense(int amount, ExpenseType type) : this()
         {
-            this.type = type;
             _amount = amount;
+            this.type = type;
         }
 
         public string Name()
