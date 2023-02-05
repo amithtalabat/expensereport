@@ -15,6 +15,12 @@ namespace expensereport_csharp
             Type = type;
         }
 
+        public Expense(int amount, ExpenseTypeDomain dinner)
+        {
+            Amount = amount;
+            Type = dinner._type;
+        }
+
         public string Name()
         {
             return new ExpenseTypeDomain(Type).Name();
@@ -28,14 +34,18 @@ namespace expensereport_csharp
 
     public class ExpenseTypeDomain
     {
+        public static readonly ExpenseTypeDomain Dinner = new ExpenseTypeDomain(ExpenseType.DINNER);
+        public static readonly ExpenseTypeDomain Breakfast = new ExpenseTypeDomain(ExpenseType.BREAKFAST);
+        public static readonly ExpenseTypeDomain CarRental = new ExpenseTypeDomain(ExpenseType.CAR_RENTAL);
+        
         public enum ExpenseType
         {
             DINNER,
             BREAKFAST,
             CAR_RENTAL
         }
-        
-        private readonly ExpenseType _type;
+
+        public readonly ExpenseType _type;
 
         public ExpenseTypeDomain(ExpenseType type)
         {

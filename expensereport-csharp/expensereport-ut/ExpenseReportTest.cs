@@ -35,7 +35,7 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense(10, ExpenseType.DINNER);
+            var dinnerExpense = new Expense(10, ExpenseTypeDomain.Dinner);
             
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
