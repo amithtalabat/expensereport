@@ -5,7 +5,9 @@ namespace expensereport_csharp
 {
     public enum ExpenseType
     {
-        DINNER, BREAKFAST, CAR_RENTAL
+        DINNER,
+        BREAKFAST,
+        CAR_RENTAL
     }
 
     public class Expense
@@ -15,21 +17,13 @@ namespace expensereport_csharp
 
         public string Name()
         {
-            String expenseName = "";
-            switch (type)
+            return type switch
             {
-                case ExpenseType.DINNER:
-                    expenseName = "Dinner";
-                    break;
-                case ExpenseType.BREAKFAST:
-                    expenseName = "Breakfast";
-                    break;
-                case ExpenseType.CAR_RENTAL:
-                    expenseName = "Car Rental";
-                    break;
-            }
-
-            return expenseName;
+                ExpenseType.DINNER => "Dinner",
+                ExpenseType.BREAKFAST => "Breakfast",
+                ExpenseType.CAR_RENTAL => "Car Rental",
+                _ => ""
+            };
         }
 
         public string MealLimitMarker()
@@ -53,7 +47,7 @@ namespace expensereport_csharp
             var mealExpenses = 0;
 
             Print("Expenses " + _dateTime);
-            
+
             foreach (Expense expense in expenses)
             {
                 if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
