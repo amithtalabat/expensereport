@@ -12,11 +12,14 @@ namespace Tests
             var report = new DummyExpenseReport();
             
             report.PrintReport(new List<Expense>());
+            Assert.AreEqual("Expenses 02/05/2023 11:42:22",report._messages[0]);
+            Assert.AreEqual("Meal expenses: 0",report._messages[1]);
+            Assert.AreEqual("Total expenses: 0",report._messages[2]);
         }
 
-        class DummyExpenseReport: ExpenseReport
+        private class DummyExpenseReport: ExpenseReport
         {
-            private readonly List<string> _messages;
+            public readonly List<string> _messages;
 
             public DummyExpenseReport()
             {
