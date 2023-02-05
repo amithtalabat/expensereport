@@ -35,7 +35,7 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense(10, ExpenseTypeDomain.Dinner);
+            var dinnerExpense = new Expense(10, Dinner);
             
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
@@ -56,16 +56,16 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense(11, ExpenseType.BREAKFAST);
+            var breakfastExpense = new Expense(11, Breakfast);
             
-            report.PrintReport(new List<Expense>() { dinnerExpense });
+            report.PrintReport(new List<Expense>() { breakfastExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Breakfast\t{dinnerExpense.Amount}\t ",
-                $"Meal expenses: {dinnerExpense.Amount}",
-                $"Total expenses: {dinnerExpense.Amount}"
+                $"Breakfast\t{breakfastExpense.Amount}\t ",
+                $"Meal expenses: {breakfastExpense.Amount}",
+                $"Total expenses: {breakfastExpense.Amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
