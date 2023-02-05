@@ -28,7 +28,7 @@ namespace expensereport_csharp
 
     public class ExpenseTypeDomain
     {
-        private readonly ExpenseType _type;
+        public readonly ExpenseType _type;
 
         public ExpenseTypeDomain(ExpenseType type)
         {
@@ -70,7 +70,8 @@ namespace expensereport_csharp
 
             foreach (var expense in expenses)
             {
-                if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
+                var expenseTypeDomain = new ExpenseTypeDomain(expense.type);
+                if (expenseTypeDomain._type == ExpenseType.DINNER || expenseTypeDomain._type == ExpenseType.BREAKFAST)
                 {
                     mealExpenses += expense._amount;
                 }
