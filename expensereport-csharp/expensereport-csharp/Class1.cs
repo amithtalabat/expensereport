@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using static expensereport_csharp.ExpenseTypeDomain;
 
 namespace expensereport_csharp
 {
     public class Expense
     {
-        public readonly ExpenseType Type;
         public readonly int Amount;
-        public readonly ExpenseTypeDomain _expenseType;
+        private readonly ExpenseTypeDomain _expenseType;
 
         public Expense(int amount, ExpenseTypeDomain expenseType)
         {
             Amount = amount;
-            Type = expenseType._type;
             _expenseType = expenseType;
         }
 
