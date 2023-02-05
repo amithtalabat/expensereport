@@ -68,7 +68,7 @@ namespace expensereport_csharp
 
             Print("Expenses " + _dateTime);
 
-            foreach (Expense expense in expenses)
+            foreach (var expense in expenses)
             {
                 if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
                 {
