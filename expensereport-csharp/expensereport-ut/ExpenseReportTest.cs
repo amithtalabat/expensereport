@@ -10,17 +10,16 @@ namespace Tests
         [Test]
         public void ExpenseReportForNoExpenses()
         {
-            var now = DateTime.Now;
             var report = new DummyExpenseReport
             {
-                _dateTime = now
+                _dateTime = TwentySecondDecember()
             };
 
             report.PrintReport(new List<Expense>());
 
             var expected = new List<string>
             {
-                $"Expenses {now}",
+                $"Expenses {TwentySecondDecember()}",
                 "Meal expenses: 0",
                 "Total expenses: 0"
             };
@@ -30,10 +29,9 @@ namespace Tests
         [Test]
         public void ExpenseReportForDinerExpense()
         {
-            var now = DateTime.Now;
             var report = new DummyExpenseReport
             {
-                _dateTime = now
+                _dateTime = TwentySecondDecember()
             };
             var dinnerExpense = new Expense() { amount = 10, type = ExpenseType.DINNER };
             
@@ -41,12 +39,17 @@ namespace Tests
 
             var expected = new List<string>
             {
-                $"Expenses {now}",
+                $"Expenses {TwentySecondDecember()}",
                 $"Dinner\t{dinnerExpense.amount}\t ",
                 $"Meal expenses: {dinnerExpense.amount}",
                 $"Total expenses: {dinnerExpense.amount}"
             };
             Assert.AreEqual(expected, report._messages);
+        }
+
+        private static DateTime TwentySecondDecember()
+        {
+            return DateTime.Parse("2022-12-22T00:00:00+0400", null);
         }
 
         private class DummyExpenseReport : ExpenseReport
