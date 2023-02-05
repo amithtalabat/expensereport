@@ -11,9 +11,11 @@ namespace Tests
         public void ExpenseReportForNoExpenses()
         {
             var now = DateTime.Now;
-            var report = new DummyExpenseReport();
-            report._dateTime = now;
-            
+            var report = new DummyExpenseReport
+            {
+                _dateTime = now
+            };
+
             report.PrintReport(new List<Expense>());
             Assert.AreEqual($"Expenses {now}",report._messages[0]);
             Assert.AreEqual("Meal expenses: 0",report._messages[1]);
