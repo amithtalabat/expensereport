@@ -54,7 +54,7 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense() { _amount = 11, type = ExpenseType.BREAKFAST };
+            var dinnerExpense = new Expense(11, ExpenseType.BREAKFAST);
             
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
@@ -75,7 +75,7 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var carRentalExpense = new Expense() { _amount = 130, type = ExpenseType.CAR_RENTAL };
+            var carRentalExpense = new Expense(130, ExpenseType.CAR_RENTAL);
             
             report.PrintReport(new List<Expense>() { carRentalExpense });
 
