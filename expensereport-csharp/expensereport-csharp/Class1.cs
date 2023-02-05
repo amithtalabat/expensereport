@@ -15,6 +15,17 @@ namespace expensereport_csharp
         public ExpenseType type;
         public int _amount;
 
+        public Expense()
+        {
+            
+        }
+
+        public Expense(ExpenseType type, int amount)
+        {
+            this.type = type;
+            _amount = amount;
+        }
+
         public string Name()
         {
             return new ExpenseTypeDomain(type).Name();
