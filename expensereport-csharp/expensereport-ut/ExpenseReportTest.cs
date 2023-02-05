@@ -88,6 +88,31 @@ namespace Tests
             };
             Assert.AreEqual(expected, report._messages);
         }
+        
+        [Test]
+        public void ExpenseReportForAllExpenses()
+        {
+            var report = new DummyExpenseReport
+            {
+                _dateTime = TwentySecondDecember()
+            };
+            var dinnerExpense = new Expense() { amount = 71, type = ExpenseType.DINNER };
+            var breakFastExpense = new Expense() { amount = 29, type = ExpenseType.BREAKFAST };
+            var carRentalExpense = new Expense() { amount = 400, type = ExpenseType.CAR_RENTAL };
+            
+            report.PrintReport(new List<Expense>() { dinnerExpense, breakFastExpense, carRentalExpense });
+
+            var expected = new List<string>
+            {
+                $"Expenses {TwentySecondDecember()}",
+                $"Dinner\t{dinnerExpense.amount}\t ",
+                $"Breakfast\t{breakFastExpense.amount}\t ",
+                $"Car Rental\t{carRentalExpense.amount}\t ",
+                "Meal expenses: 100",
+                "Total expenses: 500"
+            };
+            Assert.AreEqual(expected, report._messages);
+        }
 
         private static DateTime TwentySecondDecember()
         {
