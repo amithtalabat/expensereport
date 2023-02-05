@@ -97,8 +97,8 @@ namespace Tests
                 _dateTime = TwentySecondDecember()
             };
             
-            var dinnerExpense = new Expense() { _amount = 5001, type = ExpenseType.DINNER };
-            var breakfastExpense = new Expense() { _amount = 9999, type = ExpenseType.BREAKFAST };
+            var dinnerExpense = new Expense(5001,ExpenseType.DINNER);
+            var breakfastExpense = new Expense(9999,ExpenseType.BREAKFAST);
             
             report.PrintReport(new List<Expense>() { dinnerExpense, breakfastExpense });
 
