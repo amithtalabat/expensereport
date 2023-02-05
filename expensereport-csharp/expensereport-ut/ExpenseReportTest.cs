@@ -13,7 +13,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
 
             report.PrintReport(new List<Expense>());
@@ -32,7 +32,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
             var dinnerExpense = new Expense(10, Dinner);
 
@@ -53,7 +53,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
             var breakfastExpense = new Expense(11, Breakfast);
 
@@ -74,7 +74,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
             var carRentalExpense = new Expense(130, CarRental);
 
@@ -95,7 +95,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
 
             var dinnerExpense = new Expense(5001, Dinner);
@@ -119,7 +119,7 @@ namespace Tests
         {
             var report = new DummyExpenseReport
             {
-                _dateTime = TwentySecondDecember()
+                DateTime = TwentySecondDecember()
             };
             var dinnerExpenseOne = new Expense(71, Dinner);
             var dinnerExpenseTwo = new Expense(-10, Dinner);

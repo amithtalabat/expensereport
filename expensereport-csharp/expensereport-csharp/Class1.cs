@@ -5,14 +5,14 @@ namespace expensereport_csharp
 {
     public class ExpenseReport
     {
-        public DateTime _dateTime = DateTime.Now;
+        public DateTime DateTime = DateTime.Now;
 
         public void PrintReport(List<Expense> expenses)
         {
             var total = 0;
             var mealExpenses = 0;
 
-            Print("Expenses " + _dateTime);
+            Print("Expenses " + DateTime);
 
             foreach (var expense in expenses)
             {
