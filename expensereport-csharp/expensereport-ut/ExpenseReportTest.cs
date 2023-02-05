@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using expensereport_csharp;
 using NUnit.Framework;
-using static expensereport_csharp.Expense;
 using static expensereport_csharp.ExpenseTypeDomain;
 
 namespace Tests
@@ -36,7 +35,7 @@ namespace Tests
                 _dateTime = TwentySecondDecember()
             };
             var dinnerExpense = new Expense(10, Dinner);
-            
+
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
             var expected = new List<string>
@@ -48,7 +47,7 @@ namespace Tests
             };
             Assert.AreEqual(expected, report._messages);
         }
-        
+
         [Test]
         public void ExpenseReportForBreakFastExpense()
         {
@@ -57,7 +56,7 @@ namespace Tests
                 _dateTime = TwentySecondDecember()
             };
             var breakfastExpense = new Expense(11, Breakfast);
-            
+
             report.PrintReport(new List<Expense>() { breakfastExpense });
 
             var expected = new List<string>
@@ -69,7 +68,7 @@ namespace Tests
             };
             Assert.AreEqual(expected, report._messages);
         }
-        
+
         [Test]
         public void ExpenseReportForCarRentalExpense()
         {
@@ -77,8 +76,8 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var carRentalExpense = new Expense(130, ExpenseType.CAR_RENTAL);
-            
+            var carRentalExpense = new Expense(130, CarRental);
+
             report.PrintReport(new List<Expense>() { carRentalExpense });
 
             var expected = new List<string>
@@ -90,7 +89,7 @@ namespace Tests
             };
             Assert.AreEqual(expected, report._messages);
         }
-        
+
         [Test]
         public void ExceedsMealLimit()
         {
@@ -98,10 +97,10 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            
-            var dinnerExpense = new Expense(5001,ExpenseType.DINNER);
-            var breakfastExpense = new Expense(9999,ExpenseType.BREAKFAST);
-            
+
+            var dinnerExpense = new Expense(5001, Dinner);
+            var breakfastExpense = new Expense(9999, Breakfast);
+
             report.PrintReport(new List<Expense>() { dinnerExpense, breakfastExpense });
 
             var expected = new List<string>
@@ -114,7 +113,7 @@ namespace Tests
             };
             Assert.AreEqual(expected, report._messages);
         }
-        
+
         [Test]
         public void ExpenseReportForAllExpenses()
         {
@@ -122,14 +121,18 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpenseOne = new Expense(71,ExpenseType.DINNER);
+            var dinnerExpenseOne = new Expense(71, ExpenseType.DINNER);
             var dinnerExpenseTwo = new Expense(-10, ExpenseType.DINNER);
             var breakFastExpenseOne = new Expense(29, ExpenseType.BREAKFAST);
             var breakFastExpenseTwo = new Expense(-200, ExpenseType.BREAKFAST);
             var carRentalExpenseOne = new Expense(400, ExpenseType.CAR_RENTAL);
             var carRentalExpenseTwo = new Expense(-23, ExpenseType.CAR_RENTAL);
-            
-            report.PrintReport(new List<Expense>() { dinnerExpenseOne, dinnerExpenseTwo, breakFastExpenseOne, breakFastExpenseTwo, carRentalExpenseOne, carRentalExpenseTwo });
+
+            report.PrintReport(new List<Expense>()
+            {
+                dinnerExpenseOne, dinnerExpenseTwo, breakFastExpenseOne, breakFastExpenseTwo, carRentalExpenseOne,
+                carRentalExpenseTwo
+            });
 
             var expected = new List<string>
             {
