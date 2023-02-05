@@ -13,7 +13,7 @@ namespace expensereport_csharp
         public ExpenseType type;
         public int amount;
 
-        public string ExpenseNameFromExpenseType()
+        public string Name()
         {
             String expenseName = "";
             switch (type)
@@ -30,6 +30,16 @@ namespace expensereport_csharp
             }
 
             return expenseName;
+        }
+
+        public string MealLimitMarker()
+        {
+            var mealOverExpensesMarker =
+                type == ExpenseType.DINNER && amount > 5000 ||
+                type == ExpenseType.BREAKFAST && amount > 1000
+                    ? "X"
+                    : " ";
+            return mealOverExpensesMarker;
         }
     }
 
@@ -51,15 +61,7 @@ namespace expensereport_csharp
                     mealExpenses += expense.amount;
                 }
 
-                var expenseName = expense.ExpenseNameFromExpenseType();
-
-                var mealOverExpensesMarker =
-                    expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
-                    expense.type == ExpenseType.BREAKFAST && expense.amount > 1000
-                        ? "X"
-                        : " ";
-
-                Print(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+                Print(expense.Name() + "\t" + expense.amount + "\t" + expense.MealLimitMarker());
 
                 total += expense.amount;
             }
