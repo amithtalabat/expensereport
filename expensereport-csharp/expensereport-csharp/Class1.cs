@@ -65,6 +65,11 @@ namespace expensereport_csharp
         {
             return _type == ExpenseType.BREAKFAST;
         }
+
+        public bool IsMeal()
+        {
+            return IsDinner() || IsBreakfast();
+        }
     }
 
     public class ExpenseReport
@@ -81,7 +86,7 @@ namespace expensereport_csharp
             foreach (var expense in expenses)
             {
                 var expenseTypeDomain = new ExpenseTypeDomain(expense.type);
-                if (expenseTypeDomain.IsDinner() || expenseTypeDomain.IsBreakfast())
+                if (expenseTypeDomain.IsMeal())
                 {
                     mealExpenses += expense._amount;
                 }
