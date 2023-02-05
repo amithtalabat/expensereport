@@ -17,11 +17,16 @@ namespace Tests
             };
 
             report.PrintReport(new List<Expense>());
-            Assert.AreEqual($"Expenses {now}",report._messages[0]);
-            Assert.AreEqual("Meal expenses: 0",report._messages[1]);
-            Assert.AreEqual("Total expenses: 0",report._messages[2]);
+
+            var expected = new List<string>
+            {
+                $"Expenses {now}",
+                "Meal expenses: 0",
+                "Total expenses: 0"
+            };
+            Assert.AreEqual(expected, report._messages);
         }
-        
+
         [Test]
         public void ExpenseReportForDinerExpense()
         {
@@ -30,16 +35,21 @@ namespace Tests
             {
                 _dateTime = now
             };
-
-            var dinnerExpense = new Expense(){amount = 10,type = ExpenseType.DINNER};
+            var dinnerExpense = new Expense() { amount = 10, type = ExpenseType.DINNER };
+            
             report.PrintReport(new List<Expense>() { dinnerExpense });
-            Assert.AreEqual($"Expenses {now}",report._messages[0]);
-            Assert.AreEqual($"Dinner\t{dinnerExpense.amount}\t ",report._messages[1]);
-            Assert.AreEqual($"Meal expenses: {dinnerExpense.amount}",report._messages[2]);
-            Assert.AreEqual($"Total expenses: {dinnerExpense.amount}",report._messages[3]);
+
+            var expected = new List<string>
+            {
+                $"Expenses {now}",
+                $"Dinner\t{dinnerExpense.amount}\t ",
+                $"Meal expenses: {dinnerExpense.amount}",
+                $"Total expenses: {dinnerExpense.amount}"
+            };
+            Assert.AreEqual(expected, report._messages);
         }
 
-        private class DummyExpenseReport: ExpenseReport
+        private class DummyExpenseReport : ExpenseReport
         {
             public readonly List<string> _messages;
 
