@@ -75,16 +75,40 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense() { amount = 130, type = ExpenseType.CAR_RENTAL };
+            var carRentalExpense = new Expense() { amount = 130, type = ExpenseType.CAR_RENTAL };
             
-            report.PrintReport(new List<Expense>() { dinnerExpense });
+            report.PrintReport(new List<Expense>() { carRentalExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Car Rental\t{dinnerExpense.amount}\t ",
+                $"Car Rental\t{carRentalExpense.amount}\t ",
                 "Meal expenses: 0",
-                $"Total expenses: {dinnerExpense.amount}"
+                $"Total expenses: {carRentalExpense.amount}"
+            };
+            Assert.AreEqual(expected, report._messages);
+        }
+        
+        [Test]
+        public void ExceedsMealLimit()
+        {
+            var report = new DummyExpenseReport
+            {
+                _dateTime = TwentySecondDecember()
+            };
+            
+            var dinnerExpense = new Expense() { amount = 5001, type = ExpenseType.DINNER };
+            var breakfastExpense = new Expense() { amount = 9999, type = ExpenseType.BREAKFAST };
+            
+            report.PrintReport(new List<Expense>() { dinnerExpense, breakfastExpense });
+
+            var expected = new List<string>
+            {
+                $"Expenses {TwentySecondDecember()}",
+                $"Dinner\t{dinnerExpense.amount}\tX",
+                $"Breakfast\t{breakfastExpense.amount}\tX",
+                "Meal expenses: 15000",
+                "Total expenses: 15000"
             };
             Assert.AreEqual(expected, report._messages);
         }
