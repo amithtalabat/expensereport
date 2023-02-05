@@ -55,8 +55,13 @@ namespace expensereport_csharp
                 total += expense.amount;
             }
 
-            Console.WriteLine("Meal expenses: " + mealExpenses);
+            PrintMealExpenses(mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static void PrintMealExpenses(int mealExpenses)
+        {
+            Console.WriteLine("Meal expenses: " + mealExpenses);
         }
 
         private static void PrintExpenseForAnItem(string expenseName, Expense expense, string mealOverExpensesMarker)
