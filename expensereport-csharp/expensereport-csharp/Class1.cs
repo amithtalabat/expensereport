@@ -21,7 +21,7 @@ namespace expensereport_csharp
             int total = 0;
             int mealExpenses = 0;
 
-            Console.WriteLine("Expenses " + DateTime.Now);
+            PrintCurrentDate();
             
             foreach (Expense expense in expenses)
             {
@@ -57,6 +57,11 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static void PrintCurrentDate()
+        {
+            Console.WriteLine("Expenses " + DateTime.Now);
         }
     }
 }
