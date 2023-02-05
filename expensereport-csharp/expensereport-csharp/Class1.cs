@@ -13,7 +13,7 @@ namespace expensereport_csharp
     public class Expense
     {
         public ExpenseType type;
-        public int amount;
+        public int _amount;
 
         public string Name()
         {
@@ -28,9 +28,24 @@ namespace expensereport_csharp
 
         public string MealLimitMarker()
         {
+            return new ExpenseTypeDomain(type).ExpenseMarker(_amount);
+        }
+    }
+
+    public class ExpenseTypeDomain
+    {
+        private readonly ExpenseType _type;
+
+        public ExpenseTypeDomain(ExpenseType type)
+        {
+            _type = type;
+        }
+
+        public string ExpenseMarker(int amount)
+        {
             var mealOverExpensesMarker =
-                type == ExpenseType.DINNER && amount > 5000 ||
-                type == ExpenseType.BREAKFAST && amount > 1000
+                _type == ExpenseType.DINNER && amount > 5000 ||
+                _type == ExpenseType.BREAKFAST && amount > 1000
                     ? "X"
                     : " ";
             return mealOverExpensesMarker;
@@ -52,12 +67,12 @@ namespace expensereport_csharp
             {
                 if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
                 {
-                    mealExpenses += expense.amount;
+                    mealExpenses += expense._amount;
                 }
 
-                Print(expense.Name() + "\t" + expense.amount + "\t" + expense.MealLimitMarker());
+                Print(expense.Name() + "\t" + expense._amount + "\t" + expense.MealLimitMarker());
 
-                total += expense.amount;
+                total += expense._amount;
             }
 
             Print("Meal expenses: " + mealExpenses);

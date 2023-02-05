@@ -33,16 +33,16 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense() { amount = 10, type = ExpenseType.DINNER };
+            var dinnerExpense = new Expense() { _amount = 10, type = ExpenseType.DINNER };
             
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpense.amount}\t ",
-                $"Meal expenses: {dinnerExpense.amount}",
-                $"Total expenses: {dinnerExpense.amount}"
+                $"Dinner\t{dinnerExpense._amount}\t ",
+                $"Meal expenses: {dinnerExpense._amount}",
+                $"Total expenses: {dinnerExpense._amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -54,16 +54,16 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpense = new Expense() { amount = 11, type = ExpenseType.BREAKFAST };
+            var dinnerExpense = new Expense() { _amount = 11, type = ExpenseType.BREAKFAST };
             
             report.PrintReport(new List<Expense>() { dinnerExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Breakfast\t{dinnerExpense.amount}\t ",
-                $"Meal expenses: {dinnerExpense.amount}",
-                $"Total expenses: {dinnerExpense.amount}"
+                $"Breakfast\t{dinnerExpense._amount}\t ",
+                $"Meal expenses: {dinnerExpense._amount}",
+                $"Total expenses: {dinnerExpense._amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -75,16 +75,16 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var carRentalExpense = new Expense() { amount = 130, type = ExpenseType.CAR_RENTAL };
+            var carRentalExpense = new Expense() { _amount = 130, type = ExpenseType.CAR_RENTAL };
             
             report.PrintReport(new List<Expense>() { carRentalExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Car Rental\t{carRentalExpense.amount}\t ",
+                $"Car Rental\t{carRentalExpense._amount}\t ",
                 "Meal expenses: 0",
-                $"Total expenses: {carRentalExpense.amount}"
+                $"Total expenses: {carRentalExpense._amount}"
             };
             Assert.AreEqual(expected, report._messages);
         }
@@ -97,16 +97,16 @@ namespace Tests
                 _dateTime = TwentySecondDecember()
             };
             
-            var dinnerExpense = new Expense() { amount = 5001, type = ExpenseType.DINNER };
-            var breakfastExpense = new Expense() { amount = 9999, type = ExpenseType.BREAKFAST };
+            var dinnerExpense = new Expense() { _amount = 5001, type = ExpenseType.DINNER };
+            var breakfastExpense = new Expense() { _amount = 9999, type = ExpenseType.BREAKFAST };
             
             report.PrintReport(new List<Expense>() { dinnerExpense, breakfastExpense });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpense.amount}\tX",
-                $"Breakfast\t{breakfastExpense.amount}\tX",
+                $"Dinner\t{dinnerExpense._amount}\tX",
+                $"Breakfast\t{breakfastExpense._amount}\tX",
                 "Meal expenses: 15000",
                 "Total expenses: 15000"
             };
@@ -120,24 +120,24 @@ namespace Tests
             {
                 _dateTime = TwentySecondDecember()
             };
-            var dinnerExpenseOne = new Expense() { amount = 71, type = ExpenseType.DINNER };
-            var dinnerExpenseTwo = new Expense() { amount = -10, type = ExpenseType.DINNER };
-            var breakFastExpenseOne = new Expense() { amount = 29, type = ExpenseType.BREAKFAST };
-            var breakFastExpenseTwo = new Expense() { amount = -200, type = ExpenseType.BREAKFAST };
-            var carRentalExpenseOne = new Expense() { amount = 400, type = ExpenseType.CAR_RENTAL };
-            var carRentalExpenseTwo = new Expense() { amount = -23, type = ExpenseType.CAR_RENTAL };
+            var dinnerExpenseOne = new Expense() { _amount = 71, type = ExpenseType.DINNER };
+            var dinnerExpenseTwo = new Expense() { _amount = -10, type = ExpenseType.DINNER };
+            var breakFastExpenseOne = new Expense() { _amount = 29, type = ExpenseType.BREAKFAST };
+            var breakFastExpenseTwo = new Expense() { _amount = -200, type = ExpenseType.BREAKFAST };
+            var carRentalExpenseOne = new Expense() { _amount = 400, type = ExpenseType.CAR_RENTAL };
+            var carRentalExpenseTwo = new Expense() { _amount = -23, type = ExpenseType.CAR_RENTAL };
             
             report.PrintReport(new List<Expense>() { dinnerExpenseOne, dinnerExpenseTwo, breakFastExpenseOne, breakFastExpenseTwo, carRentalExpenseOne, carRentalExpenseTwo });
 
             var expected = new List<string>
             {
                 $"Expenses {TwentySecondDecember()}",
-                $"Dinner\t{dinnerExpenseOne.amount}\t ",
-                $"Dinner\t{dinnerExpenseTwo.amount}\t ",
-                $"Breakfast\t{breakFastExpenseOne.amount}\t ",
-                $"Breakfast\t{breakFastExpenseTwo.amount}\t ",
-                $"Car Rental\t{carRentalExpenseOne.amount}\t ",
-                $"Car Rental\t{carRentalExpenseTwo.amount}\t ",
+                $"Dinner\t{dinnerExpenseOne._amount}\t ",
+                $"Dinner\t{dinnerExpenseTwo._amount}\t ",
+                $"Breakfast\t{breakFastExpenseOne._amount}\t ",
+                $"Breakfast\t{breakFastExpenseTwo._amount}\t ",
+                $"Car Rental\t{carRentalExpenseOne._amount}\t ",
+                $"Car Rental\t{carRentalExpenseTwo._amount}\t ",
                 "Meal expenses: -110",
                 "Total expenses: 267"
             };
