@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using expensereport_csharp;
 using NUnit.Framework;
 using static expensereport_csharp.Expense;
+using static expensereport_csharp.ExpenseTypeDomain;
 
 namespace Tests
 {

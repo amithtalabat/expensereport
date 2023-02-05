@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using static expensereport_csharp.Expense;
+using static expensereport_csharp.ExpenseTypeDomain;
 
 namespace expensereport_csharp
 {
     public class Expense
     {
-        public enum ExpenseType
-        {
-            DINNER,
-            BREAKFAST,
-            CAR_RENTAL
-        }
         public readonly ExpenseType Type;
         public readonly int Amount;
 
@@ -34,6 +28,13 @@ namespace expensereport_csharp
 
     public class ExpenseTypeDomain
     {
+        public enum ExpenseType
+        {
+            DINNER,
+            BREAKFAST,
+            CAR_RENTAL
+        }
+        
         private readonly ExpenseType _type;
 
         public ExpenseTypeDomain(ExpenseType type)
