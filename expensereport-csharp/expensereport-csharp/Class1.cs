@@ -28,7 +28,7 @@ namespace expensereport_csharp
 
     public class ExpenseTypeDomain
     {
-        public readonly ExpenseType _type;
+        private readonly ExpenseType _type;
 
         public ExpenseTypeDomain(ExpenseType type)
         {
