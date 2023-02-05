@@ -60,9 +60,9 @@ namespace expensereport_csharp
             Print("Total expenses: " + total);
         }
 
-        private static void Print(string totalExpenses)
+        protected virtual void Print(string printedMessage)
         {
-            Console.WriteLine(totalExpenses);
+            Console.WriteLine(printedMessage);
         }
     }
 }
