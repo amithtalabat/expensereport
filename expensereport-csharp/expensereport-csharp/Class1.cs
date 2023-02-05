@@ -56,6 +56,11 @@ namespace expensereport_csharp
             }
 
             PrintMealExpenses(mealExpenses);
+            PrintTotalExpenses(total);
+        }
+
+        private static void PrintTotalExpenses(int total)
+        {
             Console.WriteLine("Total expenses: " + total);
         }
 
