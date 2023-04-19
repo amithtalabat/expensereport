@@ -54,5 +54,22 @@ namespace Tests
                             "Meal expenses: 1000" + Environment.NewLine +
                             "Total expenses: 1000" + Environment.NewLine, output.ToString());
         }
+        
+        [Test]
+        public void CarRentalExpense()
+        {
+            var report = new ExpenseReport();
+            var expenses = new List<Expense>
+            {
+                new Expense {type = ExpenseType.CAR_RENTAL, amount = 10000}
+            };
+            var output = new StringWriter();
+            Console.SetOut(output);
+            report.PrintReport(expenses);
+            Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
+                            "Car Rental\t10000\t " + Environment.NewLine +
+                            "Meal expenses: 0" + Environment.NewLine +
+                            "Total expenses: 10000" + Environment.NewLine, output.ToString());
+        }
     }
 }
