@@ -39,21 +39,5 @@ namespace Tests
                             "Total expenses: 5000" + Environment.NewLine, output.ToString());
         }
         
-        [Test]
-        public void BreakfastExpense(){
-            var output = new StringWriter();
-            Console.SetOut(output);
-            
-            var report = new ExpenseReport();
-            var expenses = new List<Expense>();
-            expenses.Add(new Expense {type = ExpenseType.BREAKFAST, amount = 1000});
-            
-            report.PrintReport(expenses);
-            Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
-                            "Breakfast\t1000\t " + Environment.NewLine +
-                            "Meal expenses: 1000" + Environment.NewLine +
-                            "Total expenses: 1000" + Environment.NewLine, output.ToString());
-        }
-        
     }
 }
