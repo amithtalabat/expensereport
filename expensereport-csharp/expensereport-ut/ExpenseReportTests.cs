@@ -61,7 +61,7 @@ namespace Tests
             var report = new ExpenseReport();
             var expenses = new List<Expense>
             {
-                new Expense {type = ExpenseType.CAR_RENTAL, amount = 10000}
+                new() {type = ExpenseType.CAR_RENTAL, amount = 10000}
             };
             var output = new StringWriter();
             Console.SetOut(output);
@@ -91,6 +91,46 @@ namespace Tests
                             "Car Rental\t10000\t " + Environment.NewLine +
                             "Meal expenses: 6000" + Environment.NewLine +
                             "Total expenses: 16000" + Environment.NewLine, output.ToString());
+        }
+        
+        [Test]
+        public void MealExpensesOverLimit()
+        {
+            var report = new ExpenseReport();
+            var expenses = new List<Expense>
+            {
+                new() {type = ExpenseType.DINNER, amount = 5001},
+                new() {type = ExpenseType.BREAKFAST, amount = 1001}
+            };
+            var output = new StringWriter();
+            Console.SetOut(output);
+            report.PrintReport(expenses);
+            Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
+                            "Dinner\t5001\tX" + Environment.NewLine +
+                            "Breakfast\t1001\tX" + Environment.NewLine +
+                            "Meal expenses: 6002" + Environment.NewLine +
+                            "Total expenses: 6002" + Environment.NewLine, output.ToString());
+        }
+        
+        [Test]
+        public void MealExpensesOverLimitWithCarRental()
+        {
+            var report = new ExpenseReport();
+            var expenses = new List<Expense>
+            {
+                new() {type = ExpenseType.DINNER, amount = 5001},
+                new() {type = ExpenseType.BREAKFAST, amount = 1001},
+                new() {type = ExpenseType.CAR_RENTAL, amount = 10000}
+            };
+            var output = new StringWriter();
+            Console.SetOut(output);
+            report.PrintReport(expenses);
+            Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
+                            "Dinner\t5001\tX" + Environment.NewLine +
+                            "Breakfast\t1001\tX" + Environment.NewLine +
+                            "Car Rental\t10000\t " + Environment.NewLine +
+                            "Meal expenses: 6002" + Environment.NewLine +
+                            "Total expenses: 16002" + Environment.NewLine, output.ToString());
         }
     }
 }
