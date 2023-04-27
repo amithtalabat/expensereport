@@ -8,6 +8,9 @@ namespace Tests
     {
         public int mealExpenses;
         public int total;
+        public Expense expense;
+        public string expenseName;
+        public string mealOverExpensesMarker;
         
         protected override void PrintMealExpenses(int mealExpenses)
         {
@@ -24,6 +27,14 @@ namespace Tests
         protected override void PrintReportDate()
         {
             base.PrintReportDate();
+        }
+        
+        protected override void PrintExpense(Expense expense, string expenseName, string mealOverExpensesMarker)
+        {
+            this.expense = expense;
+            this.expenseName = expenseName;
+            this.mealOverExpensesMarker = mealOverExpensesMarker;
+            base.PrintExpense(expense, expenseName, mealOverExpensesMarker);
         }
     }
     public class Tests
@@ -47,13 +58,17 @@ namespace Tests
         public void OneExpense()
         {
             TestableExpenseReport report = new TestableExpenseReport();
+            Expense expense = new Expense(){type = ExpenseType.DINNER, amount = 1};
             report.PrintReport(new List<Expense>()
             {
-                new Expense()
+                expense
             });
             
-            Assert.AreEqual(0, report.total);
-            Assert.AreEqual(0, report.mealExpenses);
+            Assert.AreEqual(1, report.total);
+            Assert.AreEqual(1, report.mealExpenses);
+            Assert.AreEqual(expense, report.expense);
+            Assert.AreEqual("Dinner", report.expenseName);
+            Assert.AreEqual(" ", report.mealOverExpensesMarker);
         }
     }
 }
