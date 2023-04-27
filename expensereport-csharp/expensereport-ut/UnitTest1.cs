@@ -42,5 +42,18 @@ namespace Tests
             Assert.AreEqual(0, report.total);
             Assert.AreEqual(0, report.mealExpenses);
         }
+
+        [Test]
+        public void OneExpense()
+        {
+            TestableExpenseReport report = new TestableExpenseReport();
+            report.PrintReport(new List<Expense>()
+            {
+                new Expense()
+            });
+            
+            Assert.AreEqual(0, report.total);
+            Assert.AreEqual(0, report.mealExpenses);
+        }
     }
 }
