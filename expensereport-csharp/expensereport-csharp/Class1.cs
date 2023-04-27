@@ -59,17 +59,17 @@ namespace expensereport_csharp
             PrintTotalExpenses(total);
         }
 
-        private static void PrintTotalExpenses(int total)
+        protected virtual void PrintTotalExpenses(int total)
         {
             Console.WriteLine("Total expenses: " + total);
         }
 
-        private static void PrintMealExpenses(int mealExpenses)
+        protected virtual void PrintMealExpenses(int mealExpenses)
         {
             Console.WriteLine("Meal expenses: " + mealExpenses);
         }
 
-        private static void PrintReportDate()
+        protected virtual void PrintReportDate()
         {
             Console.WriteLine("Expenses " + DateTime.Now);
         }
