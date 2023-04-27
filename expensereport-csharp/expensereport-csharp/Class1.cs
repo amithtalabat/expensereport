@@ -21,7 +21,7 @@ namespace expensereport_csharp
             int total = 0;
             int mealExpenses = 0;
 
-            Console.WriteLine("Expenses " + DateTime.Now);
+            PrintReportDate();
             
             foreach (Expense expense in expenses)
             {
@@ -55,8 +55,23 @@ namespace expensereport_csharp
                 total += expense.amount;
             }
 
-            Console.WriteLine("Meal expenses: " + mealExpenses);
+            PrintMealExpenses(mealExpenses);
+            PrintTotalExpenses(total);
+        }
+
+        private static void PrintTotalExpenses(int total)
+        {
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static void PrintMealExpenses(int mealExpenses)
+        {
+            Console.WriteLine("Meal expenses: " + mealExpenses);
+        }
+
+        private static void PrintReportDate()
+        {
+            Console.WriteLine("Expenses " + DateTime.Now);
         }
     }
 }

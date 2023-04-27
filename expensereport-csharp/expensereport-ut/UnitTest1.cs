@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using expensereport_csharp;
 using NUnit.Framework;
 
 namespace Tests
@@ -10,9 +12,10 @@ namespace Tests
         }
 
         [Test]
-        public void Test1()
+        public void NoExpenses()
         {
-            Assert.Pass();
+            ExpenseReport report = new ExpenseReport();
+            report.PrintReport(new List<Expense>());
         }
     }
 }
