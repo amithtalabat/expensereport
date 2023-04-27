@@ -50,8 +50,7 @@ namespace expensereport_csharp
                         ? "X"
                         : " ";
 
-                Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
-
+                PrintExpense(expense, expenseName, mealOverExpensesMarker);
                 total += expense.amount;
             }
 
@@ -72,6 +71,11 @@ namespace expensereport_csharp
         protected virtual void PrintReportDate()
         {
             Console.WriteLine("Expenses " + DateTime.Now);
+        }
+
+        protected virtual void PrintExpense(Expense expense, String expenseName, String mealOverExpensesMarker) 
+        {
+            Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
         }
     }
 }
