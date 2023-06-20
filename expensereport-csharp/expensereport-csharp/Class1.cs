@@ -30,19 +30,7 @@ namespace expensereport_csharp
                     mealExpenses += expense.amount;
                 }
 
-                var expenseName = "";
-                switch (expense.type)
-                {
-                    case ExpenseType.DINNER:
-                        expenseName = "Dinner";
-                        break;
-                    case ExpenseType.BREAKFAST:
-                        expenseName = "Breakfast";
-                        break;
-                    case ExpenseType.CAR_RENTAL:
-                        expenseName = "Car Rental";
-                        break;
-                }
+                var expenseName = ExpenseName(expense);
 
                 var mealOverExpensesMarker =
                     expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
@@ -57,6 +45,25 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static string ExpenseName(Expense expense)
+        {
+            var expenseName = "";
+            switch (expense.type)
+            {
+                case ExpenseType.DINNER:
+                    expenseName = "Dinner";
+                    break;
+                case ExpenseType.BREAKFAST:
+                    expenseName = "Breakfast";
+                    break;
+                case ExpenseType.CAR_RENTAL:
+                    expenseName = "Car Rental";
+                    break;
+            }
+
+            return expenseName;
         }
 
         private static bool IsBreakfast(Expense expense)
