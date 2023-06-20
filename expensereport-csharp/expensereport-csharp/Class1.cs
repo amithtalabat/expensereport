@@ -74,16 +74,5 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
-        }
-
-        private static bool IsBreakFastNew(Expense expense)
-        {
-            return expense.type == ExpenseType.BREAKFAST;
-        }
-
-        private static bool IsDinnerNew(Expense expense)
-        {
-            return expense.type == ExpenseType.DINNER;
-        }
-    }
+        }    }
 }
