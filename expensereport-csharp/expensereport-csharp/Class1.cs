@@ -74,5 +74,6 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
-        }    }
+        }    
+    }
 }
