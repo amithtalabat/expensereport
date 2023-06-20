@@ -82,8 +82,7 @@ namespace expensereport_csharp
 
                 var expenseName = expense.Name();
 
-                var mealOverExpensesMarker =
-                    expense.IsMealOverExpense()
+                var mealOverExpensesMarker = expense.IsMealOverExpense()
                         ? "X"
                         : " ";
 
