@@ -93,13 +93,18 @@ namespace expensereport_csharp
                 var mealOverExpensesMarker = expense.IsMealOverExpense()
                         ? MealOverExpensesMarker : NoMarker;
 
-                Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+                Console.WriteLine(ExpenseWithMarker(expenseName, expense, mealOverExpensesMarker));
 
                 total += expense.amount;
             }
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static string ExpenseWithMarker(string expenseName, Expense expense, string mealOverExpensesMarker)
+        {
+            return expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker;
         }
     }
 }
