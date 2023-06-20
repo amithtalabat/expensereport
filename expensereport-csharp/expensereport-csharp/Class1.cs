@@ -62,6 +62,11 @@ namespace expensereport_csharp
             return IsOverExpenseDinner() ||
                    IsOverExpenseBreakfast();
         }
+
+        public bool IsMeal()
+        {
+            return IsDinner() || IsBreakfast();
+        }
     }
 
     public class ExpenseReport
@@ -78,7 +83,7 @@ namespace expensereport_csharp
             
             foreach (var expense in expenses)
             {
-                if (expense.IsDinner() || expense.IsBreakfast())
+                if (expense.IsMeal())
                 {
                     mealExpenses += expense.amount;
                 }
