@@ -51,6 +51,11 @@ namespace expensereport_csharp
         {
             return IsDinner() && IsGreaterThan(5000);
         }
+
+        public bool IsOverExpenseBreakfast()
+        {
+            return IsBreakfast() && IsGreaterThan(1000);
+        }
     }
 
     public class ExpenseReport
@@ -73,7 +78,7 @@ namespace expensereport_csharp
 
                 var mealOverExpensesMarker =
                     expense.IsOverExpenseDinner() ||
-                    expense.IsBreakfast() && expense.IsGreaterThan(1000)
+                    expense.IsOverExpenseBreakfast()
                         ? "X"
                         : " ";
 
