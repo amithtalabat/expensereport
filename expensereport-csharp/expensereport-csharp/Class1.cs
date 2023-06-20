@@ -31,6 +31,16 @@ namespace expensereport_csharp
 
             return expenseName;
         }
+
+        public bool IsDinner()
+        {
+            return type == ExpenseType.DINNER;
+        }
+
+        public bool IsBreakfast()
+        {
+            return type == ExpenseType.BREAKFAST;
+        }
     }
 
     public class ExpenseReport
@@ -44,7 +54,7 @@ namespace expensereport_csharp
             
             foreach (var expense in expenses)
             {
-                if (IsDinner(expense) || IsBreakfast(expense))
+                if (expense.IsDinner() || expense.IsBreakfast())
                 {
                     mealExpenses += expense.amount;
                 }
@@ -64,16 +74,6 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
-        }
-
-        private static bool IsBreakfast(Expense expense)
-        {
-            return expense.type == ExpenseType.BREAKFAST;
-        }
-
-        private static bool IsDinner(Expense expense)
-        {
-            return expense.type == ExpenseType.DINNER;
         }
     }
 }
