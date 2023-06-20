@@ -13,7 +13,7 @@ namespace expensereport_csharp
         public ExpenseType type;
         public int amount;
 
-        public string ExpenseName()
+        public string Name()
         {
             var expenseName = "";
             switch (type)
@@ -59,11 +59,11 @@ namespace expensereport_csharp
                     mealExpenses += expense.amount;
                 }
 
-                var expenseName = expense.ExpenseName();
+                var expenseName = expense.Name();
 
                 var mealOverExpensesMarker =
-                    expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
-                    expense.type == ExpenseType.BREAKFAST && expense.amount > 1000
+                    IsDinnerNew(expense) && expense.amount > 5000 ||
+                    IsBreakFastNew(expense) && expense.amount > 1000
                         ? "X"
                         : " ";
 
@@ -74,6 +74,16 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static bool IsBreakFastNew(Expense expense)
+        {
+            return expense.type == ExpenseType.BREAKFAST;
+        }
+
+        private static bool IsDinnerNew(Expense expense)
+        {
+            return expense.type == ExpenseType.DINNER;
         }
     }
 }
