@@ -85,10 +85,10 @@ namespace expensereport_csharp
 
             foreach (var expense in expenses){
 
-            var expenseName = expense.Name();
+                var expenseName = expense.Name();
 
                 var mealOverExpensesMarker = expense.IsMealOverExpense()
-                        ? MealOverExpensesMarker : NoMarker;
+                    ? MealOverExpensesMarker : NoMarker;
 
                 Console.WriteLine(ExpenseWithMarker(expenseName, expense, mealOverExpensesMarker));
 
