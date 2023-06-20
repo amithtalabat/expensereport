@@ -62,8 +62,8 @@ namespace expensereport_csharp
                 var expenseName = expense.Name();
 
                 var mealOverExpensesMarker =
-                    IsDinnerNew(expense) && expense.amount > 5000 ||
-                    IsBreakFastNew(expense) && expense.amount > 1000
+                    expense.IsDinner() && expense.amount > 5000 ||
+                    expense.IsBreakfast() && expense.amount > 1000
                         ? "X"
                         : " ";
 
