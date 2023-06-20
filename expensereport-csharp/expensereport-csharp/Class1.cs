@@ -93,14 +93,15 @@ namespace expensereport_csharp
                 Console.WriteLine(ExpenseWithMarker(expenseName, expense, mealOverExpensesMarker));
             }
 
-            var total = 0;
-            foreach (var expense in expenses)
-            {
-                total += expense.amount;
-            }
+            var total = Total(expenses);
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
+        }
+
+        private static int Total(List<Expense> expenses)
+        {
+            return expenses.Sum(expense => expense.amount);
         }
 
         private static int MealExpenses(IEnumerable<Expense> expenses)
