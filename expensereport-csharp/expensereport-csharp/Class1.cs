@@ -68,7 +68,7 @@ namespace expensereport_csharp
 
                 var mealOverExpensesMarker =
                     expense.IsDinner() && expense.IsGreaterThan(5000) ||
-                    expense.IsBreakfast() && expense.amount > 1000
+                    expense.IsBreakfast() && expense.IsGreaterThan(1000)
                         ? "X"
                         : " ";
 
