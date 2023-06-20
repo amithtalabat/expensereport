@@ -77,21 +77,25 @@ namespace expensereport_csharp
 
         public static void PrintReport(List<Expense> expenses)
         {
-            var total = 0;
-
             Console.WriteLine("Expenses " + DateTime.Now);
 
             var mealExpenses = MealExpenses(expenses);
 
-            foreach (var expense in expenses){
+            foreach (var expense in expenses)
+            {
 
                 var expenseName = expense.Name();
 
                 var mealOverExpensesMarker = expense.IsMealOverExpense()
-                    ? MealOverExpensesMarker : NoMarker;
+                    ? MealOverExpensesMarker
+                    : NoMarker;
 
                 Console.WriteLine(ExpenseWithMarker(expenseName, expense, mealOverExpensesMarker));
+            }
 
+            var total = 0;
+            foreach (var expense in expenses)
+            {
                 total += expense.amount;
             }
 
