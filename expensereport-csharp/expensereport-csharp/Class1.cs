@@ -99,7 +99,7 @@ namespace expensereport_csharp
             Console.WriteLine("Total expenses: " + total);
         }
 
-        private static int Total(List<Expense> expenses)
+        private static int Total(IEnumerable<Expense> expenses)
         {
             return expenses.Sum(expense => expense.amount);
         }
