@@ -16,21 +16,21 @@ namespace expensereport_csharp
 
     public class ExpenseReport
     {
-        public void PrintReport(List<Expense> expenses)
+        public static void PrintReport(List<Expense> expenses)
         {
-            int total = 0;
-            int mealExpenses = 0;
+            var total = 0;
+            var mealExpenses = 0;
 
             Console.WriteLine("Expenses " + DateTime.Now);
             
-            foreach (Expense expense in expenses)
+            foreach (var expense in expenses)
             {
                 if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST)
                 {
                     mealExpenses += expense.amount;
                 }
 
-                String expenseName = "";
+                var expenseName = "";
                 switch (expense.type)
                 {
                     case ExpenseType.DINNER:
@@ -44,7 +44,7 @@ namespace expensereport_csharp
                         break;
                 }
 
-                String mealOverExpensesMarker =
+                var mealOverExpensesMarker =
                     expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
                     expense.type == ExpenseType.BREAKFAST && expense.amount > 1000
                         ? "X"

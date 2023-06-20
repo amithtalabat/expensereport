@@ -15,7 +15,7 @@ namespace Tests
             var expenses = new List<Expense>();
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Meal expenses: 0" + Environment.NewLine +
                             "Total expenses: 0" + Environment.NewLine, output.ToString());
@@ -31,7 +31,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Dinner\t5000\t " + Environment.NewLine +
                             "Meal expenses: 5000" + Environment.NewLine +
@@ -48,7 +48,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Breakfast\t1000\t " + Environment.NewLine +
                             "Meal expenses: 1000" + Environment.NewLine +
@@ -65,7 +65,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Car Rental\t10000\t " + Environment.NewLine +
                             "Meal expenses: 0" + Environment.NewLine +
@@ -84,7 +84,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Dinner\t5000\t " + Environment.NewLine +
                             "Breakfast\t1000\t " + Environment.NewLine +
@@ -104,7 +104,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Dinner\t5001\tX" + Environment.NewLine +
                             "Breakfast\t1001\tX" + Environment.NewLine +
@@ -124,7 +124,7 @@ namespace Tests
             };
             var output = new StringWriter();
             Console.SetOut(output);
-            report.PrintReport(expenses);
+            ExpenseReport.PrintReport(expenses);
             Assert.AreEqual("Expenses " + DateTime.Now + Environment.NewLine +
                             "Dinner\t5001\tX" + Environment.NewLine +
                             "Breakfast\t1001\tX" + Environment.NewLine +
