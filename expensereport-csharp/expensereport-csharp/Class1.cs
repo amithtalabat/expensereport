@@ -41,6 +41,11 @@ namespace expensereport_csharp
         {
             return type == ExpenseType.BREAKFAST;
         }
+
+        public bool IsGreaterThan(int amount)
+        {
+            return this.amount > amount;
+        }
     }
 
     public class ExpenseReport
@@ -62,7 +67,7 @@ namespace expensereport_csharp
                 var expenseName = expense.Name();
 
                 var mealOverExpensesMarker =
-                    expense.IsDinner() && expense.amount > 5000 ||
+                    expense.IsDinner() && expense.IsGreaterThan(5000) ||
                     expense.IsBreakfast() && expense.amount > 1000
                         ? "X"
                         : " ";
@@ -74,6 +79,6 @@ namespace expensereport_csharp
 
             Console.WriteLine("Meal expenses: " + mealExpenses);
             Console.WriteLine("Total expenses: " + total);
-        }    
+        }
     }
 }
