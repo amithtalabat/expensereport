@@ -67,6 +67,7 @@ namespace expensereport_csharp
     public class ExpenseReport
     {
         private const string MealOverExpensesMarker = "X";
+        private const string NoMarker = " ";
 
         public static void PrintReport(List<Expense> expenses)
         {
@@ -85,8 +86,7 @@ namespace expensereport_csharp
                 var expenseName = expense.Name();
 
                 var mealOverExpensesMarker = expense.IsMealOverExpense()
-                        ? MealOverExpensesMarker
-                        : " ";
+                        ? MealOverExpensesMarker : NoMarker;
 
                 Console.WriteLine(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
 
